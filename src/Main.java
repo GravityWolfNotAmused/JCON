@@ -1,4 +1,3 @@
-package BattleEye;
 
 import BattleEye.Client.JConClient;
 
@@ -17,7 +16,7 @@ public class Main {
         });
 
         client.addQueueListener((type, sequence, data) -> {
-            //do your stuff on packet sent
+            //do your stuff on packet sent.
         });
 
 

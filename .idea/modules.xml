@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BattleEye.Java.iml" filepath="$PROJECT_DIR$/BattleEye.Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCON.iml" filepath="$PROJECT_DIR$/JCON.iml" />
     </modules>
   </component>
 </project>
