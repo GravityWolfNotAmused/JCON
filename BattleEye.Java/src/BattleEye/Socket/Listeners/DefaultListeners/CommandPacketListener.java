@@ -10,8 +10,12 @@ public class CommandPacketListener implements BattlEyePacketListener {
 
             StringBuilder builder = new StringBuilder()
                     .append("[BattlEye]:: Sequence: " + sequence + ", ")
-                    .append("Command Response Received: ")
-                    .append(response + "\n");
+                    .append("Command Response Received: ");
+
+            if(response != null && !response.equals(" ") && !response.isEmpty())
+                builder.append(response);
+            else
+                builder.append("Empty");
 
             if(!response.equals("   "))
                 System.out.println(builder.toString());

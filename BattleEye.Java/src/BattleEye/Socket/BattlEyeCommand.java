@@ -1,6 +1,6 @@
 package BattleEye.Socket;
 
-import BattleEye.Command.BattleEyeCommandType;
+import BattleEye.Command.BattlEyeCommandType;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -22,7 +22,7 @@ public class BattlEyeCommand {
         packetBytes = new byte[0];
     }
 
-    public BattlEyeCommand generatePacket(BattleEyeCommandType type) {
+    public BattlEyeCommand generatePacket(BattlEyeCommandType type) {
         int bufferSize = 7;
 
         if (commandBytes != null)

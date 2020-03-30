@@ -1,4 +1,4 @@
-package BattleEye;
+package BattleEye.Socket.Sequence;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

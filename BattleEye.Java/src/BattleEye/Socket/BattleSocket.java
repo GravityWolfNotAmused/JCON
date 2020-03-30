@@ -1,7 +1,5 @@
 package BattleEye.Socket;
 
-import BattleEye.Command.BattleEyeCommandType;
-
 import java.io.IOException;
 
 public interface BattleSocket {

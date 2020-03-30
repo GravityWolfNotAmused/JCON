@@ -1,13 +1,11 @@
 package BattleEye.Client;
 
-import BattleEye.Command.BattleEyeCommandType;
 import BattleEye.Socket.BattlEyeSocket;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 import BattleEye.Socket.Listeners.BattlEyeQueueListener;
 import BattleEye.Threading.JConReceivingThread;
 import BattleEye.Threading.JConSendingThread;
 
-import java.io.IOException;
 import java.net.SocketException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,8 +16,17 @@ public class JConClient {
     private Timer connectionCommandTaskTimer;
     private BattlEyeSocket socket;
 
-    public JConClient(String address, int port, String password, boolean debug) throws SocketException {
-        socket = new BattlEyeSocket(address, port, password, debug);
+    public final int MONITOR_TIME = 30000; //Will Trigger at 31 Seconds.
+
+    public JConClient(String address, int port, String password, boolean debug) {
+        try {
+            socket = new BattlEyeSocket(address, port, password, debug);
+        } catch (SocketException e) {
+            e.printStackTrace();
+            System.err.println("[BattlEye]:: Exiting client...");
+            System.exit(-1);
+        }
+
         connectionCommandTaskTimer = new Timer();
         sendThread = new JConSendingThread(socket);
         receiveThread = new JConReceivingThread(socket);
@@ -39,10 +46,11 @@ public class JConClient {
                     long curTime = System.currentTimeMillis();
                     long timeSince = curTime - lastTime;
 
-                    if(timeSince > 44000)
-                    {
-                        if (!socket.hasNextCommand())
-                        {
+                    if(debug)
+                        System.out.println("Time Since: " + timeSince);
+
+                    if (timeSince > MONITOR_TIME) {
+                        if (!socket.hasNextCommand()) {
                             socket.sendCommand(null);
                         }
                     }
@@ -53,22 +61,25 @@ public class JConClient {
         sendThread.start();
         receiveThread.start();
 
-        System.out.println("Send: " + sendThread.isAlive());
-        System.out.println("Receive: " + receiveThread.isAlive());
-        System.out.println("IsConnected: " + socket.isConnected());
+        if(debug) {
+            StringBuilder builder = new StringBuilder()
+                    .append("[BattlEye]:: Sending Thread IsAlive: " + sendThread.isAlive() + "\n")
+                    .append("[BattlEye]:: Receive Thread IsAlive: " + receiveThread.isAlive() + "\n")
+                    .append("[BattlEye]:: Socket IsConnected: " + socket.isConnected() + "\n");
+
+            System.out.println(builder.toString());
+        }
     }
 
-    public void addPacketListener(BattlEyePacketListener listener)
-    {
-        socket.addListener(listener);
+    public void addPacketListener(BattlEyePacketListener listener) {
+        socket.addPacketListener(listener);
     }
 
-    public void addQueueListener(BattlEyeQueueListener listener)
-    {
+    public void addQueueListener(BattlEyeQueueListener listener) {
         socket.addQueueListener(listener);
     }
 
-    public void sendCommand(String command) throws IOException {
+    public void sendCommand(String command) {
         if (socket.isConnected()) {
             socket.sendCommand(command);
         }
