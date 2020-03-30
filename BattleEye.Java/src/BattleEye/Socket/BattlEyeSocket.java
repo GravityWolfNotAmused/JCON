@@ -31,11 +31,13 @@ public class BattlEyeSocket implements BattleSocket {
         loginInformation = new BattlEyeLoginInfo(address, port, password);
         commandQueue = new ConcurrentLinkedQueue<>();
         incrementer = new NumberIncrementer();
+
         try {
             socket = new DatagramSocket();
         } catch (SocketException e) {
             throw new SocketException(e.getMessage());
         }
+
         packetListeners = new ArrayList<>();
         queueListeners = new ArrayList<>();
         packetLastSent = new AtomicLong(0);
@@ -54,21 +56,20 @@ public class BattlEyeSocket implements BattleSocket {
 
                 BattlEyeCommand response = new BattlEyeCommand(null)
                         .setSequence(sequence)
-                        .generatePacket(BattleEyeCommandType.values()[type]);
+                        .generatePacket(BattleEyeCommandType.MESSAGE);
 
                 if (isConnected())
                     queueCommand(response);
             }
         });
-
-        initListeners();
-    }
-
-    public void initListeners() {
     }
 
     public void addListener(BattlEyePacketListener listener) {
         packetListeners.add(listener);
+    }
+
+    public void addQueueListener(BattlEyeQueueListener listener) {
+        queueListeners.add(listener);
     }
 
     public boolean isConnected() {
@@ -102,13 +103,13 @@ public class BattlEyeSocket implements BattleSocket {
     }
 
     @Override
-    public void sendCommand(String command, BattleEyeCommandType type) {
+    public void sendCommand(String command) {
         if (command == null) {
             BattlEyeCommand nullCommand = new BattlEyeCommand(null)
                     .setSequence(incrementer.next())
-                    .generatePacket(type);
+                    .generatePacket(BattleEyeCommandType.COMMAND);
 
-            if (isConnected() && packetLastSent.get() > 40000)
+            if (isConnected())
                 queueCommand(nullCommand);
 
             return;
@@ -121,7 +122,7 @@ public class BattlEyeSocket implements BattleSocket {
 
         BattlEyeCommand commandRequest = new BattlEyeCommand(command)
                 .setSequence(incrementer.next())
-                .generatePacket(type);
+                .generatePacket(BattleEyeCommandType.COMMAND);
 
         queueCommand(commandRequest);
     }
@@ -249,8 +250,8 @@ public class BattlEyeSocket implements BattleSocket {
         return this;
     }
 
-    public AtomicLong getTimeSinceLastPacketSent() {
-        return packetLastSent;
+    public long getTimeSinceLastPacketSent() {
+        return packetLastSent.get();
     }
 
     private void sendPacket(byte[] data) throws IOException {

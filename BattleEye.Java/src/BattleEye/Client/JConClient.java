@@ -3,6 +3,7 @@ package BattleEye.Client;
 import BattleEye.Command.BattleEyeCommandType;
 import BattleEye.Socket.BattlEyeSocket;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
+import BattleEye.Socket.Listeners.BattlEyeQueueListener;
 import BattleEye.Threading.JConReceivingThread;
 import BattleEye.Threading.JConSendingThread;
 
@@ -34,7 +35,7 @@ public class JConClient {
             @Override
             public void run() {
                 if (socket.isConnected()) {
-                    long lastTime = socket.getTimeSinceLastPacketSent().get();
+                    long lastTime = socket.getTimeSinceLastPacketSent();
                     long curTime = System.currentTimeMillis();
                     long timeSince = curTime - lastTime;
 
@@ -42,12 +43,12 @@ public class JConClient {
                     {
                         if (!socket.hasNextCommand())
                         {
-                            socket.sendCommand(null, BattleEyeCommandType.COMMAND);
+                            socket.sendCommand(null);
                         }
                     }
                 }
             }
-        }, 0, 5000);
+        }, 0, 1000);
 
         sendThread.start();
         receiveThread.start();
@@ -62,9 +63,14 @@ public class JConClient {
         socket.addListener(listener);
     }
 
+    public void addQueueListener(BattlEyeQueueListener listener)
+    {
+        socket.addQueueListener(listener);
+    }
+
     public void sendCommand(String command) throws IOException {
         if (socket.isConnected()) {
-            socket.sendCommand(command, BattleEyeCommandType.COMMAND);
+            socket.sendCommand(command);
         }
     }
 }
