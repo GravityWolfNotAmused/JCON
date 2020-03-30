@@ -18,10 +18,11 @@ public class BattlEyeCommand {
             command = cmd;
             commandBytes = cmd.getBytes(StandardCharsets.UTF_8);
         }
+
         packetBytes = new byte[0];
     }
 
-    public void generatePacket(BattleEyeCommandType type) {
+    public BattlEyeCommand generatePacket(BattleEyeCommandType type) {
         int bufferSize = 7;
 
         if (commandBytes != null)
@@ -42,10 +43,10 @@ public class BattlEyeCommand {
         buffer.put((byte) 0xFF);
         buffer.put(type.getHexValue());
 
-        if (sequence >= (byte) 0)
+        if (sequence >= 0)
             buffer.put(sequence);
 
-        if (commandBytes != null && commandBytes.length > 0)
+        if (command != null && !command.isEmpty())
             buffer.put(commandBytes);
 
         CRC32 crc = new CRC32();
@@ -55,6 +56,8 @@ public class BattlEyeCommand {
         buffer.putInt(2, hash);
         packetBytes = buffer.array();
         buffer.clear();
+
+        return this;
     }
 
     public String getCommandString() {
@@ -70,7 +73,8 @@ public class BattlEyeCommand {
         return sequence;
     }
 
-    public void setSequence(byte seq) {
+    public BattlEyeCommand setSequence(byte seq) {
         sequence = seq;
+        return this;
     }
 }

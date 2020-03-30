@@ -2,10 +2,10 @@ package BattleEye.Login;
 
 import java.net.InetSocketAddress;
 
-public class BattleEyeLoginInfo extends InetSocketAddress {
+public class BattlEyeLoginInfo extends InetSocketAddress {
     private String password;
 
-    public BattleEyeLoginInfo(String hostname, int port, String pass) {
+    public BattlEyeLoginInfo(String hostname, int port, String pass) {
         super(hostname, port);
         password = pass;
     }
