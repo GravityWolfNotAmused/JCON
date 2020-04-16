@@ -1,6 +1,7 @@
 # JCON
 BattlEye Rcon Library written in Java.
 
+This is a work in progress, and contains bugs at the moment.
 
 ## Sending Command Sample
 ```java
