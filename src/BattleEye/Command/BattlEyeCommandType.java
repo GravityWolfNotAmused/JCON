@@ -1,19 +1,36 @@
 package BattleEye.Command;
 
 public enum BattlEyeCommandType {
-    LOGIN((byte) 0x00),
-    COMMAND((byte) 0x01),
-    MESSAGE((byte) 0x02);
+    Restart("#restart"),
+    Reassign("#reassign"),
+    Shutdown("#shutdown"),
+    Lock("#lock"),
+    Unlock("#unlock"),
+    Mission("#mission"),
+    Missions("missions"),
+    Players("players"),
+    Say("say"),
+    Kick("kick"),
+    RConPassword("RConPassword"),
+    MaxPing("maxPing"),
+    LoadScripts("loadScripts"),
+    LoadEvents("loadEvents"),
+    LoadBans("loadBans"),
+    Bans("bans"),
+    Ban("ban"),
+    AddBan("addBan"),
+    RemoveBan("removeBan"),
+    WriteBans("writeBans");
 
-    private byte hexValue;
+    private String commandString;
 
-    BattlEyeCommandType(byte hex)
+    BattlEyeCommandType(String command)
     {
-        hexValue = hex;
+        commandString = command;
     }
 
-    public byte getHexValue()
+    public String getCommandString()
     {
-        return hexValue;
+        return commandString;
     }
 }

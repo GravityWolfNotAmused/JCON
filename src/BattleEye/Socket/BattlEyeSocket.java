@@ -1,6 +1,6 @@
 package BattleEye.Socket;
 
-import BattleEye.Command.BattlEyeCommandType;
+import BattleEye.Command.BattlEyeCommand;
 import BattleEye.Login.BattlEyeLoginInfo;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 import BattleEye.Socket.Listeners.BattlEyeQueueListener;
@@ -11,9 +11,7 @@ import BattleEye.Socket.Sequence.NumberIncrementer;
 
 import java.io.IOException;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -52,7 +50,7 @@ public class BattlEyeSocket implements BattleSocket {
 
                 BattlEyeCommand response = new BattlEyeCommand(null)
                         .setSequence(sequence)
-                        .generatePacket(BattlEyeCommandType.MESSAGE);
+                        .generatePacket(BattlEyePacketType.MESSAGE);
 
                 if (isConnected())
                     queueCommand(response);
@@ -78,7 +76,7 @@ public class BattlEyeSocket implements BattleSocket {
 
         BattlEyeCommand loginCommand = new BattlEyeCommand(passwordBytes)
                 .setSequence(-1)
-                .generatePacket(BattlEyeCommandType.LOGIN);
+                .generatePacket(BattlEyePacketType.LOGIN);
 
         if (isConnected())
             queueCommand(loginCommand);
@@ -96,7 +94,7 @@ public class BattlEyeSocket implements BattleSocket {
 
         if (commandRequest != null) {
             commandRequest.setSequence(incrementer.next())
-                    .generatePacket(BattlEyeCommandType.COMMAND);
+                    .generatePacket(BattlEyePacketType.COMMAND);
 
             if (isConnected())
                 queueCommand(commandRequest);

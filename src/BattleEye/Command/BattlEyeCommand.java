@@ -1,12 +1,9 @@
-package BattleEye.Socket;
+package BattleEye.Command;
 
-import BattleEye.Command.BattlEyeCommandType;
+import BattleEye.Socket.BattlEyePacketType;
 
-import java.net.DatagramPacket;
-import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.channels.DatagramChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.CRC32;
 
@@ -16,7 +13,7 @@ public class BattlEyeCommand {
     private int sequence;
     private byte[] packetBytes;
 
-    BattlEyeCommand(String cmd) {
+    public BattlEyeCommand(String cmd) {
         if(cmd != null && cmd.length() > 0) {
             command = cmd;
             commandBytes = cmd.getBytes(StandardCharsets.UTF_8);
@@ -25,7 +22,7 @@ public class BattlEyeCommand {
         packetBytes = new byte[0];
     }
 
-    public BattlEyeCommand generatePacket(BattlEyeCommandType type) {
+    public BattlEyeCommand generatePacket(BattlEyePacketType type) {
         int headerAndSequence = 8 + ( sequence >= 0 ? 1 : 0);
 
         if(commandBytes != null)
