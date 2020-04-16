@@ -16,7 +16,8 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            client = new JConClient("127.0.0.1", 2302, "VPPTest", true);
+            //Change 127.0.0.1 to IP address of the server which you are trying to connect to.
+            client = new JConClient("127.0.0.1", 2302, "JCONTest", false);
         } catch (SocketException e) {
             e.printStackTrace();
         }
