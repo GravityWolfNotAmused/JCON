@@ -4,7 +4,7 @@ import BattleEye.Socket.Listeners.BattlEyePacketListener;
 
 public class CommandPacketListener implements BattlEyePacketListener {
     @Override
-    public void OnPacketReceived(byte type, byte sequence, byte[] data) {
+    public void onPacketReceived(byte type, int sequence, byte[] data) {
         if (type == 0x01) {
             String response = new String(data);
 

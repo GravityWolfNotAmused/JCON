@@ -1,15 +1,21 @@
 
 import BattleEye.Client.JConClient;
+import BattleEye.Socket.Listeners.BattlEyeQueueListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.SocketException;
 
 public class Main {
     private static JConClient client;
 
     public static void main(String[] args) {
-        client = new JConClient("127.0.0.1", 2302, "VPPTest", false);
+        try {
+            client = new JConClient("127.0.0.1", 2302, "VPPTest", true);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
 
         client.addPacketListener((type, sequence, data) -> {
             //Do your stuff on packet received.

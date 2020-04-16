@@ -11,12 +11,14 @@ public class NumberIncrementer {
         sequence = new AtomicInteger(-1);
     }
 
-    public byte next() {
-        int next = sequence.incrementAndGet();
+    public int next() {
+        int nextInt = sequence.incrementAndGet();
 
-        if(next > 255)
+        if(nextInt > 255) {
             sequence.set(0);
+            nextInt = sequence.get();
+        }
 
-        return (byte) sequence.get();
+        return nextInt;
     }
 }

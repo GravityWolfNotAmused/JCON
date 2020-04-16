@@ -4,7 +4,7 @@ import BattleEye.Socket.Listeners.BattlEyePacketListener;
 
 public class LoginPacketListener implements BattlEyePacketListener {
     @Override
-    public void OnPacketReceived(byte type, byte sequence, byte[] data) {
+    public void onPacketReceived(byte type, int sequence, byte[] data) {
         if (type == 0x00) {
             if (sequence == 0x01)
                 System.out.println("[BattlEye]:: Login Request: Success");

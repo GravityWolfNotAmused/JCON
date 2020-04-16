@@ -1,5 +1,5 @@
 package BattleEye.Socket.Listeners;
 
 public interface BattlEyeQueueListener {
-    void OnCommandSent(byte type, byte sequence, byte[] data);
+    void onCommandSent(byte type, int sequence, byte[] data);
 }

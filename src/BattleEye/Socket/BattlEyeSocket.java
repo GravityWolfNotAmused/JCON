@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
@@ -25,6 +26,7 @@ public class BattlEyeSocket implements BattleSocket {
 
     private NumberIncrementer incrementer;
     private AtomicLong packetLastSent;
+    private AtomicLong packetLastReceived;
 
     private AtomicBoolean isDebug;
 
@@ -34,14 +36,9 @@ public class BattlEyeSocket implements BattleSocket {
         incrementer = new NumberIncrementer();
         listenerManager = new BattlEyeListenerManager();
         isDebug = new AtomicBoolean(debug);
-
-        try {
-            socket = new DatagramSocket();
-        } catch (SocketException e) {
-            throw new SocketException(e.getMessage());
-        }
-
+        socket = new DatagramSocket();
         packetLastSent = new AtomicLong(0);
+        packetLastReceived = new AtomicLong(0);
 
         listenerManager.addPacketListener(new LoginPacketListener());
         listenerManager.addPacketListener(new CommandPacketListener());
@@ -62,6 +59,7 @@ public class BattlEyeSocket implements BattleSocket {
             }
         });
     }
+
     @Override
     public boolean connect() {
         socket.connect(loginInformation.getAddress(), loginInformation.getPort());
@@ -79,46 +77,37 @@ public class BattlEyeSocket implements BattleSocket {
         String passwordBytes = loginInformation.getPassword();
 
         BattlEyeCommand loginCommand = new BattlEyeCommand(passwordBytes)
-                .setSequence((byte) -1)
+                .setSequence(-1)
                 .generatePacket(BattlEyeCommandType.LOGIN);
 
         if (isConnected())
             queueCommand(loginCommand);
-
-        Thread.sleep(1000);
     }
 
     @Override
     public void sendCommand(String command) {
-        if (command == null) {
-            BattlEyeCommand nullCommand = new BattlEyeCommand(null)
-                    .setSequence(incrementer.next())
+        BattlEyeCommand commandRequest = null;
+
+        if (command == null)
+            commandRequest = new BattlEyeCommand(null);
+
+        if (command != null)
+            commandRequest = new BattlEyeCommand(command);
+
+        if (commandRequest != null) {
+            commandRequest.setSequence(incrementer.next())
                     .generatePacket(BattlEyeCommandType.COMMAND);
 
             if (isConnected())
-                queueCommand(nullCommand);
-
-            return;
+                queueCommand(commandRequest);
         }
-        /* Get bytes of the command */
-        byte[] commandBytes = null;
-
-        if (command != null && !command.isEmpty())
-            commandBytes = command.getBytes(StandardCharsets.UTF_8);
-
-        BattlEyeCommand commandRequest = new BattlEyeCommand(command)
-                .setSequence(incrementer.next())
-                .generatePacket(BattlEyeCommandType.COMMAND);
-
-        queueCommand(commandRequest);
     }
 
     @Override
     public void receiveCallback() throws IOException {
-        byte[] receivedData = new byte[socket.getOption(StandardSocketOptions.SO_SNDBUF)];
-        DatagramPacket packet = new DatagramPacket(receivedData, receivedData.length);
-
         if (isConnected()) {
+            byte[] receivedData = new byte[socket.getOption(StandardSocketOptions.SO_RCVBUF)];
+            DatagramPacket packet = new DatagramPacket(receivedData, receivedData.length);
 
             try {
                 socket.receive(packet);
@@ -147,7 +136,8 @@ public class BattlEyeSocket implements BattleSocket {
             byte type = headlessPacket[0];
 
             if (headlessPacket.length >= 2) {
-                byte sequence = headlessPacket[1];
+                int sequence = Byte.toUnsignedInt(headlessPacket[1]);
+
                 if (type == 0x01) {
                     byte multipacketHeaderByte = headlessPacket[2];
 
@@ -163,7 +153,6 @@ public class BattlEyeSocket implements BattleSocket {
 
                             if (i > 0) {
                                 socket.receive(packet);
-
                                 try {
                                     Thread.sleep(1000);
                                 } catch (InterruptedException e) {
@@ -205,6 +194,7 @@ public class BattlEyeSocket implements BattleSocket {
 
                 headlessPacket = temp;
 
+                packetLastReceived.set(System.currentTimeMillis());
                 listenerManager.sendOnPacketReceived(type, sequence, headlessPacket);
             }
         }
@@ -240,11 +230,12 @@ public class BattlEyeSocket implements BattleSocket {
             try {
                 if (isConnected()) {
                     sendPacket(nextCommand.getPacketBytes());
-                    commandQueue.remove();
                 }
             } catch (PortUnreachableException e) {
                 e.printStackTrace();
                 reconnect();
+            } finally {
+                commandQueue.remove();
             }
         }
     }
@@ -258,15 +249,26 @@ public class BattlEyeSocket implements BattleSocket {
         return packetLastSent.get();
     }
 
+    public long getTimeSinceLastPacketReceived() {
+        return packetLastSent.get();
+    }
+
+    public void disconnect() {
+        if (socket.isConnected()) {
+            socket.disconnect();
+        }
+        socket.close();
+    }
+
     private void sendPacket(byte[] data) throws IOException {
         if (isConnected()) {
             socket.send(new DatagramPacket(data, data.length, socket.getRemoteSocketAddress()));
 
             byte type = data[7];
-            byte sequence = data[8];
+            int sequence = Byte.toUnsignedInt(data[8]);
             int removeFrom = 8;
 
-            if (sequence > (byte) -1)
+            if (sequence > -1 && type != 0x00)
                 removeFrom += 1;
 
             byte[] temp = new byte[data.length - removeFrom];
@@ -277,7 +279,7 @@ public class BattlEyeSocket implements BattleSocket {
             data = temp;
 
             if (type == 0x00)
-                sequence = (byte) -1;
+                sequence = -1;
 
             listenerManager.sendOnPacketSent(type, sequence, data);
             packetLastSent.set(System.currentTimeMillis());

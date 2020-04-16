@@ -30,15 +30,15 @@ public class BattlEyeListenerManager {
         queueListeners.removeAll(queueListeners);
     }
 
-    public void sendOnPacketReceived(byte type, byte sequence, byte[] data) {
+    public void sendOnPacketReceived(byte type, int sequence, byte[] data) {
         for (BattlEyePacketListener listener : packetListeners) {
-            listener.OnPacketReceived(type, sequence, data);
+            listener.onPacketReceived(type, sequence, data);
         }
     }
 
-    public void sendOnPacketSent(byte type, byte sequence, byte[] data) {
+    public void sendOnPacketSent(byte type, int sequence, byte[] data) {
         for (BattlEyeQueueListener listener : queueListeners) {
-            listener.OnCommandSent(type, sequence, data);
+            listener.onCommandSent(type, sequence, data);
         }
     }
 }

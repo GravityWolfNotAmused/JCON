@@ -1,5 +1,5 @@
 package BattleEye.Socket.Listeners;
 
 public interface BattlEyePacketListener {
-    void OnPacketReceived(byte type, byte sequence, byte[] data);
+    void onPacketReceived(byte type, int sequence, byte[] data);
 }

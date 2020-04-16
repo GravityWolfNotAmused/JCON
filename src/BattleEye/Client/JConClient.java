@@ -1,35 +1,60 @@
 package BattleEye.Client;
 
+import BattleEye.Login.BattlEyeLoginInfo;
 import BattleEye.Socket.BattlEyeSocket;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 import BattleEye.Socket.Listeners.BattlEyeQueueListener;
-import BattleEye.Threading.JConReceivingThread;
-import BattleEye.Threading.JConSendingThread;
 
+import java.io.IOException;
 import java.net.SocketException;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class JConClient {
-    private Thread sendThread;
-    private Thread receiveThread;
+    private Timer receiveTaskTimer;
+    private Timer sendTaskTimer;
     private Timer connectionCommandTaskTimer;
+
     private BattlEyeSocket socket;
 
-    public final int MONITOR_TIME = 30000; //Will Trigger at 31 Seconds.
+    public final int MONITOR_TIME = 29000;
+    public final int TIMEOUT_TIME = 5500;
 
-    public JConClient(String address, int port, String password, boolean debug) {
-        try {
-            socket = new BattlEyeSocket(address, port, password, debug);
-        } catch (SocketException e) {
-            e.printStackTrace();
-            System.err.println("[BattlEye]:: Exiting client...");
-            System.exit(-1);
-        }
+    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo, boolean debug) throws SocketException {
+        if (battlEyeLoginInfo == null)
+            throw new IllegalArgumentException("BattlEyeLoginInfo cannot be null");
+
+        socket = new BattlEyeSocket(battlEyeLoginInfo.getAddress().getHostAddress(), battlEyeLoginInfo.getPort(), battlEyeLoginInfo.getPassword(), debug);
 
         connectionCommandTaskTimer = new Timer();
-        sendThread = new JConSendingThread(socket);
-        receiveThread = new JConReceivingThread(socket);
+        receiveTaskTimer = new Timer();
+        sendTaskTimer = new Timer();
+
+        receiveTaskTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if (socket.isConnected()) {
+                    try {
+                        socket.receiveCallback();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, 0, 500);
+
+        sendTaskTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if (socket.isConnected()) {
+                    try {
+                        socket.sendNextPacket();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, 0, 600);
 
         try {
             socket.connect();
@@ -42,12 +67,14 @@ public class JConClient {
             @Override
             public void run() {
                 if (socket.isConnected()) {
-                    long lastTime = socket.getTimeSinceLastPacketSent();
+                    long lastSentTime = socket.getTimeSinceLastPacketSent();
+                    long lastReceived = socket.getTimeSinceLastPacketReceived();
                     long curTime = System.currentTimeMillis();
-                    long timeSince = curTime - lastTime;
+                    long timeSince = curTime - lastSentTime;
 
-                    if(debug)
+                    if (debug) {
                         System.out.println("Time Since: " + timeSince);
+                    }
 
                     if (timeSince > MONITOR_TIME) {
                         if (!socket.hasNextCommand()) {
@@ -58,17 +85,24 @@ public class JConClient {
             }
         }, 0, 1000);
 
-        sendThread.start();
-        receiveThread.start();
-
-        if(debug) {
+        if (debug) {
             StringBuilder builder = new StringBuilder()
-                    .append("[BattlEye]:: Sending Thread IsAlive: " + sendThread.isAlive() + "\n")
-                    .append("[BattlEye]:: Receive Thread IsAlive: " + receiveThread.isAlive() + "\n")
                     .append("[BattlEye]:: Socket IsConnected: " + socket.isConnected() + "\n");
 
             System.out.println(builder.toString());
         }
+    }
+
+    public JConClient(String address, int port, String password, boolean debug) throws SocketException {
+        this(new BattlEyeLoginInfo(address, port, password), debug);
+    }
+
+    public JConClient(String address, int port, String password) throws SocketException {
+        this(address, port, password, false);
+    }
+
+    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo) throws SocketException {
+        this(battlEyeLoginInfo, false);
     }
 
     public void addPacketListener(BattlEyePacketListener listener) {

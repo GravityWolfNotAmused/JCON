@@ -2,15 +2,18 @@ package BattleEye.Socket;
 
 import BattleEye.Command.BattlEyeCommandType;
 
+import java.net.DatagramPacket;
+import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.channels.DatagramChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.CRC32;
 
 public class BattlEyeCommand {
     private String command;
     private byte[] commandBytes;
-    private byte sequence;
+    private int sequence;
     private byte[] packetBytes;
 
     BattlEyeCommand(String cmd) {
@@ -23,18 +26,12 @@ public class BattlEyeCommand {
     }
 
     public BattlEyeCommand generatePacket(BattlEyeCommandType type) {
-        int bufferSize = 7;
+        int headerAndSequence = 8 + ( sequence >= 0 ? 1 : 0);
 
-        if (commandBytes != null)
-            bufferSize += commandBytes.length;
+        if(commandBytes != null)
+            headerAndSequence += commandBytes.length;
 
-        if (sequence != -1)
-            bufferSize += 2;
-
-        if (sequence == -1)
-            bufferSize += 1;
-
-        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        ByteBuffer buffer = ByteBuffer.allocate(headerAndSequence);
         buffer.order(ByteOrder.LITTLE_ENDIAN);
 
         buffer.put((byte) 'B');
@@ -44,7 +41,7 @@ public class BattlEyeCommand {
         buffer.put(type.getHexValue());
 
         if (sequence >= 0)
-            buffer.put(sequence);
+            buffer.put((byte) sequence);
 
         if (command != null && !command.isEmpty())
             buffer.put(commandBytes);
@@ -56,7 +53,6 @@ public class BattlEyeCommand {
         buffer.putInt(2, hash);
         packetBytes = buffer.array();
         buffer.clear();
-
         return this;
     }
 
@@ -69,11 +65,11 @@ public class BattlEyeCommand {
         return packetBytes;
     }
 
-    public byte getSequence() {
+    public int getSequence() {
         return sequence;
     }
 
-    public BattlEyeCommand setSequence(byte seq) {
+    public BattlEyeCommand setSequence(int seq) {
         sequence = seq;
         return this;
     }
