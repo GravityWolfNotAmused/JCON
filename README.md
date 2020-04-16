@@ -1,7 +1,7 @@
 # JCON
 BattlEye Rcon Library written in Java.
 
-This is a work in progress, and contains bugs at the moment.
+This is a work in progress, contains bugs and missing some features at the moment.
 
 ## Sending Command Sample
 ```java
@@ -15,14 +15,18 @@ public class Main {
     private static JConClient client;
 
     public static void main(String[] args) {
-        client = new JConClient("127.0.0.1", 2302, "VPPTest", false);
+        try {
+            client = new JConClient("127.0.0.1", 2302, "VPPTest", true);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
 
         client.addPacketListener((type, sequence, data) -> {
             //Do your stuff on packet received.
         });
 
         client.addQueueListener((type, sequence, data) -> {
-            //do your stuff on packet sent
+            //do your stuff on packet sent.
         });
 
 
