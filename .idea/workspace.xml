@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9133de9c-feb9-49ee-b94e-937f0f233c4c" name="Default Changelist" comment="Updated a few things. Still fixing bug.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyePacketType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeListenerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeListenerManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeSocket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyePacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyePacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyeQueueListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyeQueueListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

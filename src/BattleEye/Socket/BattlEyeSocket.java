@@ -71,7 +71,7 @@ public class BattlEyeSocket implements BattleSocket {
     }
 
     @Override
-    public void login() throws InterruptedException {
+    public void login(){
         String passwordBytes = loginInformation.getPassword();
 
         BattlEyeCommand loginCommand = new BattlEyeCommand(passwordBytes)
@@ -251,13 +251,6 @@ public class BattlEyeSocket implements BattleSocket {
         return packetLastSent.get();
     }
 
-    public void disconnect() {
-        if (socket.isConnected()) {
-            socket.disconnect();
-        }
-        socket.close();
-    }
-
     private void sendPacket(byte[] data) throws IOException {
         if (isConnected()) {
             socket.send(new DatagramPacket(data, data.length, socket.getRemoteSocketAddress()));
@@ -298,11 +291,7 @@ public class BattlEyeSocket implements BattleSocket {
         if (!socket.isConnected())
             connect();
 
-        try {
-            login();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        login();
     }
 
     private void queueCommand(BattlEyeCommand command) {
