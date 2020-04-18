@@ -280,6 +280,9 @@ public class BattlEyeSocket implements BattleSocket {
     private void reconnect() {
         System.err.println("[BattlEye]:: Attempting Reconnect in 2 seconds.");
 
+        if(isDebug.get())
+            System.exit(69420666);
+
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

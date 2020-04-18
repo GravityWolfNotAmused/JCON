@@ -18,7 +18,7 @@ public class JConClient {
 
     private BattlEyeSocket socket;
 
-    public final int MONITOR_TIME = 29000;
+    public final int MONITOR_TIME = 39000;
     public final int TIMEOUT_TIME = 10000;
 
     public JConClient(BattlEyeLoginInfo battlEyeLoginInfo, boolean debug) throws SocketException {
@@ -57,12 +57,8 @@ public class JConClient {
             }
         }, 0, 600);
 
-        try {
-            socket.connect();
-            socket.login();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        socket.connect();
+        socket.login();
 
         connectionCommandTaskTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -121,19 +117,17 @@ public class JConClient {
             BattlEyeCommandType[] commands = BattlEyeCommandType.values();
             boolean isValidCommand = false;
 
-            for(BattlEyeCommandType type : commands)
-            {
-                if(type.getCommandString().equals(cmd[0]))
-                {
+            for (BattlEyeCommandType type : commands) {
+                if (type.getCommandString().equals(cmd[0])) {
                     isValidCommand = true;
                     break;
                 }
             }
 
-            if(isValidCommand)
+            if (isValidCommand)
                 socket.sendCommand(command);
 
-            if(!isValidCommand)
+            if (!isValidCommand)
                 System.err.println("[BattlEye]:: Invalid Command! Command not sent to RCON.");
         }
     }

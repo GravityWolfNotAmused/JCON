@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9133de9c-feb9-49ee-b94e-937f0f233c4c" name="Default Changelist" comment="Updated a few things. Still fixing bug.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,25 +116,25 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1500" y="475" key="FileChooserDialogImpl/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564293550" />
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom" timestamp="1587015213882">
+    <state width="2517" height="413" key="GridCell.Tab.0.bottom" timestamp="1587090606139">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587015213882" />
+    <state width="2517" height="413" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
     <state width="2005" height="413" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.center" timestamp="1587015213882">
+    <state width="2517" height="413" key="GridCell.Tab.0.center" timestamp="1587090606139">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587015213882" />
+    <state width="2517" height="413" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
     <state width="2005" height="413" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.left" timestamp="1587015213882">
+    <state width="2517" height="413" key="GridCell.Tab.0.left" timestamp="1587090606139">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587015213882" />
+    <state width="2517" height="413" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
     <state width="2005" height="413" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.right" timestamp="1587015213882">
+    <state width="2517" height="413" key="GridCell.Tab.0.right" timestamp="1587090606139">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587015213882" />
+    <state width="2517" height="413" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
     <state width="2005" height="413" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
     <state x="-1779" y="363" key="SettingsEditor" timestamp="1585564295197">
       <screen x="-2560" y="0" width="2560" height="1440" />
@@ -148,10 +149,10 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1471" y="638" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564362358" />
-    <state x="-1583" y="452" width="606" height="536" key="find.popup" timestamp="1587014311014">
+    <state x="-1583" y="452" width="607" height="536" key="find.popup" timestamp="1587080577548">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1583" y="452" width="606" height="536" key="find.popup/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587014311014" />
+    <state x="-1583" y="452" width="607" height="536" key="find.popup/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587080577548" />
     <state x="465" y="198" key="new project wizard" timestamp="1586232421611">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
