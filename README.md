@@ -6,5 +6,5 @@ This is a work in progress, contains bugs and missing some features at the momen
 ## Current Bugs:
 After 2 and a half hours the library crashes that BE protected server.
 
-## Sending Command Sample
-###Replace with link to source file.
+## Usage Sample
+[Main.java](https://github.com/GravityWolfNotAmused/JCON/blob/master/ExampleMain/Main.java)
