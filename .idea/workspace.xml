@@ -3,8 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="9133de9c-feb9-49ee-b94e-937f0f233c4c" name="Default Changelist" comment="Updated a few things. Still fixing bug.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommandType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -25,6 +46,7 @@
   <component name="ProjectId" id="1ZqPXMh8xIzsjkEbk3mN1BZK5Zy" />
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,25 +58,32 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="D:/Users/Gravi/AppData/Local/Android/SDK" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="BattleEye.Socket" />
+      <recent name="BattleEye" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JCON" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="BattleEye.Logger.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BattleEye.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JCON" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="BattleEye.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="VM_PARAMETERS" value="-Xmx5G" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -68,7 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -100,62 +129,73 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1826" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585564093156">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1826" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564093156" />
-    <state x="-1518" y="606" width="476" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585709259616">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1518" y="606" width="476" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585709259616" />
-    <state x="-2468" y="92" width="2376" height="1256" key="DiffContextDialog" timestamp="1585564362362">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-2468" y="92" width="2376" height="1256" key="DiffContextDialog/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564362362" />
-    <state x="-1500" y="475" key="FileChooserDialogImpl" timestamp="1585564293550">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1500" y="475" key="FileChooserDialogImpl/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564293550" />
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom" timestamp="1587090606139">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
-    <state width="2005" height="413" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.center" timestamp="1587090606139">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
-    <state width="2005" height="413" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.left" timestamp="1587090606139">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
-    <state width="2005" height="413" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state width="2517" height="413" key="GridCell.Tab.0.right" timestamp="1587090606139">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587090606139" />
-    <state width="2005" height="413" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586987647656" />
-    <state x="-1779" y="363" key="SettingsEditor" timestamp="1585564295197">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1779" y="363" key="SettingsEditor/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564295197" />
-    <state x="780" y="436" key="com.intellij.ide.util.TipDialog" timestamp="1586068303786">
+    <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598130775653">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="-1585" y="545" key="com.intellij.ide.util.TipDialog/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585864611236" />
-    <state x="780" y="436" key="com.intellij.ide.util.TipDialog/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586068303786" />
-    <state x="-1471" y="638" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585564362358">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1471" y="638" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1585564362358" />
-    <state x="-1583" y="452" width="607" height="536" key="find.popup" timestamp="1587080577548">
-      <screen x="-2560" y="0" width="2560" height="1440" />
-    </state>
-    <state x="-1583" y="452" width="607" height="536" key="find.popup/0.0.2048.1152/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1587080577548" />
-    <state x="465" y="198" key="new project wizard" timestamp="1586232421611">
+    <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1598130775653" />
+    <state x="830" y="278" key="#com.intellij.ide.util.MemberChooser" timestamp="1604609134373">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
-    <state x="465" y="198" key="new project wizard/0.0.2048.1152/-2560.0.2560.1440@0.0.2048.1152" timestamp="1586232421611" />
+    <state x="830" y="278" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604609134373" />
+    <state x="830" y="278" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602451707955" />
+    <state x="754" y="359" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1598130773736">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="754" y="359" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1598130773736" />
+    <state x="755" y="324" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604613395926">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="755" y="324" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604613395926" />
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom" timestamp="1604614046197">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046197" />
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
+    <state width="2005" height="482" key="GridCell.Tab.0.center" timestamp="1604614046196">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046196" />
+    <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
+    <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
+    <state width="2005" height="482" key="GridCell.Tab.0.left" timestamp="1604614046196">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046196" />
+    <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785598" />
+    <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
+    <state width="2005" height="482" key="GridCell.Tab.0.right" timestamp="1604614046197">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046197" />
+    <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
+    <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
+    <state x="487" y="158" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604606936621">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="487" y="158" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604606936621" />
+    <state x="601" y="313" width="846" height="601" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598223433407">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="601" y="313" width="846" height="601" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1598223433407" />
+    <state x="-2482" y="70" width="1790" height="625" key="dock-window-1" timestamp="1602454987907">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-2482" y="70" width="1790" height="625" key="dock-window-1/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1602454987907" />
+    <state x="-2672" y="-7" width="1790" height="625" maximized="true" key="dock-window-1/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602453565809" />
+    <state x="719" y="308" width="611" height="536" key="find.popup" timestamp="1604613333795">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="719" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604613333795" />
+    <state x="-1841" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527760230" />
+    <state x="719" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602453759884" />
+    <state x="-2095" y="198" key="new project wizard" timestamp="1601334924494">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-2095" y="198" key="new project wizard/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1601334924494" />
+    <state x="681" y="269" key="run.anything.popup" timestamp="1604543585689">
+      <screen x="0" y="0" width="2048" height="1152" />
+    </state>
+    <state x="681" y="269" key="run.anything.popup/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604543585689" />
   </component>
 </project>

@@ -1,6 +1,8 @@
 package BattleEye.Socket;
 
+import BattleEye.Client.JConClient;
 import BattleEye.Command.BattlEyeCommand;
+import BattleEye.Logger.BattlEyeLogger;
 import BattleEye.Login.BattlEyeLoginInfo;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 import BattleEye.Socket.Listeners.BattlEyeQueueListener;
@@ -11,13 +13,16 @@ import BattleEye.Socket.Sequence.NumberIncrementer;
 
 import java.io.IOException;
 import java.net.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class BattlEyeSocket implements BattleSocket {
-    private DatagramSocket socket;
+    private DatagramChannel socket;
     private BattlEyeLoginInfo loginInformation;
     private BattlEyeListenerManager listenerManager;
     private ConcurrentLinkedQueue<BattlEyeCommand> commandQueue;
@@ -25,16 +30,18 @@ public class BattlEyeSocket implements BattleSocket {
     private NumberIncrementer incrementer;
     private AtomicLong packetLastSent;
     private AtomicLong packetLastReceived;
-
+    private AtomicInteger reconnectAttempts;
     private AtomicBoolean isDebug;
 
-    public BattlEyeSocket(String address, int port, String password, boolean debug) throws SocketException {
+    public BattlEyeSocket(String address, int port, String password, boolean debug) throws IOException {
         loginInformation = new BattlEyeLoginInfo(address, port, password);
+        reconnectAttempts = new AtomicInteger();
         commandQueue = new ConcurrentLinkedQueue<>();
         incrementer = new NumberIncrementer();
         listenerManager = new BattlEyeListenerManager();
         isDebug = new AtomicBoolean(debug);
-        socket = new DatagramSocket();
+        socket = DatagramChannel.open();
+        socket.configureBlocking(false);
         packetLastSent = new AtomicLong(0);
         packetLastReceived = new AtomicLong(0);
 
@@ -46,8 +53,7 @@ public class BattlEyeSocket implements BattleSocket {
 
         listenerManager.addPacketListener((type, sequence, data) -> {
             if (type == 0x02) {
-                System.out.println("[BattlEye]:: Message Received: " + sequence + ", Response: " + new String(data));
-
+                BattlEyeLogger.GetLogger().log("Message Received: " + sequence + ", Response: " + new String(data));
                 BattlEyeCommand response = new BattlEyeCommand(null)
                         .setSequence(sequence)
                         .generatePacket(BattlEyePacketType.MESSAGE);
@@ -60,10 +66,15 @@ public class BattlEyeSocket implements BattleSocket {
 
     @Override
     public boolean connect() {
-        socket.connect(loginInformation.getAddress(), loginInformation.getPort());
+        try {
+            socket.connect(loginInformation);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (isConnected()) {
-            System.out.println("[BattlEye]:: Connected to " + loginInformation.getAddress().getHostAddress());
+            BattlEyeLogger.GetLogger().log("Connected to " + loginInformation.getAddress().getHostAddress());
+            reconnectAttempts.set(0);
             return true;
         }
 
@@ -71,61 +82,72 @@ public class BattlEyeSocket implements BattleSocket {
     }
 
     @Override
-    public void login(){
+    public void login() {
         String passwordBytes = loginInformation.getPassword();
 
         BattlEyeCommand loginCommand = new BattlEyeCommand(passwordBytes)
                 .setSequence(-1)
                 .generatePacket(BattlEyePacketType.LOGIN);
 
-        if (isConnected())
+        if (isConnected()) {
             queueCommand(loginCommand);
+        }
     }
 
     @Override
     public void sendCommand(String command) {
         BattlEyeCommand commandRequest = null;
 
-        if (command == null)
+        if (command == null) {
             commandRequest = new BattlEyeCommand(null);
-
+        }
         if (command != null)
             commandRequest = new BattlEyeCommand(command);
 
-        if (commandRequest != null) {
-            commandRequest.setSequence(incrementer.next())
-                    .generatePacket(BattlEyePacketType.COMMAND);
+        commandRequest.setSequence(incrementer.next())
+                .generatePacket(BattlEyePacketType.COMMAND);
 
-            if (isConnected())
-                queueCommand(commandRequest);
+        if (command == null) {
+            if (isDebug.get()) {
+                debugPrintBytes(commandRequest.getPacketBytes());
+            }
+        }
+
+        if (isConnected()) {
+            queueCommand(commandRequest);
         }
     }
 
     @Override
     public void receiveCallback() throws IOException {
         if (isConnected()) {
-            byte[] receivedData = new byte[socket.getOption(StandardSocketOptions.SO_RCVBUF)];
-            DatagramPacket packet = new DatagramPacket(receivedData, receivedData.length);
-
+            ByteBuffer buffer = ByteBuffer.allocate(SocketOptions.SO_RCVBUF);
+            buffer.clear();
             try {
-                socket.receive(packet);
+                socket.receive(buffer);
+                buffer.flip();
             } catch (PortUnreachableException e) {
                 reconnect();
                 return;
             }
 
+            byte[] receivedData = buffer.array();
+
             if (receivedData.length < 7) {
-                System.err.println("[BattlEye]:: Packet received has an invalid header.");
+                BattlEyeLogger.GetLogger().error("Packet received has an invalid header.");
                 return;
             }
 
             if (receivedData[0] != (byte) 'B' || receivedData[1] != (byte) 'E') {
-                System.err.println("[BattlEye]:: Invalid Header");
+                if (receivedData[0] == (byte) 0 && receivedData[1] == (byte) 0)
+                    return;
+
+                BattlEyeLogger.GetLogger().error("Invalid Header, Does not contain BE in packet.");
                 return;
             }
 
             if (receivedData[6] != (byte) 0xFF) {
-                System.err.println("[BattlEye]:: Invalid Header");
+                BattlEyeLogger.GetLogger().error("Invalid Header, Missing Byte: 0xFF");
                 return;
             }
 
@@ -146,11 +168,10 @@ public class BattlEyeSocket implements BattleSocket {
                         byte[][] multipacket = new byte[packetCount][];
 
                         for (int i = 0; i < packetCount; i++) {
-                            byte[] currentPacket = new byte[socket.getOption(StandardSocketOptions.SO_SNDBUF)];
-                            packet = new DatagramPacket(currentPacket, currentPacket.length);
+                            ByteBuffer currentBuffer = ByteBuffer.allocate(SocketOptions.SO_RCVBUF);
 
                             if (i > 0) {
-                                socket.receive(packet);
+                                socket.receive(currentBuffer);
                                 try {
                                     Thread.sleep(1000);
                                 } catch (InterruptedException e) {
@@ -158,6 +179,7 @@ public class BattlEyeSocket implements BattleSocket {
                                 }
                             }
 
+                            byte[] currentPacket = currentBuffer.array();
                             packetIndex = currentPacket[2];
 
                             byte[] temp = new byte[currentPacket.length - 12];
@@ -230,7 +252,8 @@ public class BattlEyeSocket implements BattleSocket {
                     sendPacket(nextCommand.getPacketBytes());
                 }
             } catch (PortUnreachableException e) {
-                e.printStackTrace();
+                BattlEyeLogger.GetLogger().error(e.getMessage());
+
                 reconnect();
             } finally {
                 commandQueue.remove();
@@ -253,7 +276,7 @@ public class BattlEyeSocket implements BattleSocket {
 
     private void sendPacket(byte[] data) throws IOException {
         if (isConnected()) {
-            socket.send(new DatagramPacket(data, data.length, socket.getRemoteSocketAddress()));
+            socket.send(ByteBuffer.wrap(data).put(data).flip(), loginInformation);
 
             byte type = data[7];
             int sequence = Byte.toUnsignedInt(data[8]);
@@ -278,29 +301,43 @@ public class BattlEyeSocket implements BattleSocket {
     }
 
     private void reconnect() {
-        System.err.println("[BattlEye]:: Attempting Reconnect in 2 seconds.");
+        reconnectAttempts.set(reconnectAttempts.get() + 1);
 
-        if(isDebug.get())
-            System.exit(69420666);
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (reconnectAttempts.get() > 3) {
+            try {
+                socket.disconnect();
+                BattlEyeLogger.GetLogger().error("Attempt To Reconnect has failed");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        incrementer = new NumberIncrementer();
+        if (reconnectAttempts.get() <= 3) {
+            try {
+                BattlEyeLogger.GetLogger().error("Attempting to reconnect in 2 seconds. Attempt #" + reconnectAttempts.get());
+                Thread.sleep(1000);
+                BattlEyeLogger.GetLogger().error("Attempting to reconnect in 1 seconds. Attempt #" + reconnectAttempts.get());
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-        if (!socket.isConnected())
-            connect();
+            incrementer = new NumberIncrementer();
 
-        login();
+            if (!socket.isConnected())
+                connect();
+
+            login();
+        }
     }
 
     private void queueCommand(BattlEyeCommand command) {
         if (commandQueue.offer(command)) {
+            if (isDebug.get()) {
+                BattlEyeLogger.GetLogger().log("Command: " + command.getCommandString() + " has been successfully added to the process queue");
+            }
         } else
-            System.err.println("[BattlEye]:: CommandQueue is full. Disregarding command: " + command.getCommandString());
+            BattlEyeLogger.GetLogger().log("CommandQueue is full. Disregarding command: " + command.getCommandString());
     }
 
     private byte[] removeHeader(byte[] data) {
@@ -318,6 +355,6 @@ public class BattlEyeSocket implements BattleSocket {
         for (byte b : data) {
             byteS += String.format("%02X ", b);
         }
-        System.out.println(byteS);
+        BattlEyeLogger.GetLogger().log(byteS);
     }
 }

@@ -1,5 +1,6 @@
 package BattleEye.Socket.Listeners.DefaultListeners;
 
+import BattleEye.Logger.BattlEyeLogger;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 
 public class CommandPacketListener implements BattlEyePacketListener {
@@ -9,7 +10,7 @@ public class CommandPacketListener implements BattlEyePacketListener {
             String response = new String(data);
 
             StringBuilder builder = new StringBuilder()
-                    .append("[BattlEye]:: Sequence: " + sequence + ", ")
+                    .append("Sequence: " + sequence + ", ")
                     .append("Command Response Received: ");
 
             if(response != null && !response.equals(" ") && !response.isEmpty())
@@ -18,7 +19,7 @@ public class CommandPacketListener implements BattlEyePacketListener {
                 builder.append("Empty");
 
             if(!response.equals("   "))
-                System.out.println(builder.toString());
+                BattlEyeLogger.GetLogger().log(builder.toString());
         }
     }
 }

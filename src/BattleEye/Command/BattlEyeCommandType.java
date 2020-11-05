@@ -33,4 +33,16 @@ public enum BattlEyeCommandType {
     {
         return commandString;
     }
+
+    public static boolean isValidCommand(String command)
+    {
+        for(BattlEyeCommandType c : values())
+        {
+            if(command.toLowerCase().contains(c.getCommandString().toLowerCase()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

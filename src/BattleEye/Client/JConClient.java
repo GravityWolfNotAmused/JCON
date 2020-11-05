@@ -1,13 +1,14 @@
 package BattleEye.Client;
 
 import BattleEye.Command.BattlEyeCommandType;
+import BattleEye.Logger.BLogger;
+import BattleEye.Logger.BattlEyeLogger;
 import BattleEye.Login.BattlEyeLoginInfo;
 import BattleEye.Socket.BattlEyeSocket;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 import BattleEye.Socket.Listeners.BattlEyeQueueListener;
 
 import java.io.IOException;
-import java.net.SocketException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,12 +19,22 @@ public class JConClient {
 
     private BattlEyeSocket socket;
 
-    public final int MONITOR_TIME = 39000;
+    public final int MONITOR_TIME = 30000;
     public final int TIMEOUT_TIME = 10000;
 
-    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo, boolean debug) throws SocketException {
+    public final int SEND_TICK = 1;
+    public final int RECEIVE_TICK = 1;
+    public final int CONNECTION_TICK = 1000;
+
+    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo, boolean debug) throws IOException {
         if (battlEyeLoginInfo == null)
             throw new IllegalArgumentException("BattlEyeLoginInfo cannot be null");
+
+        if(battlEyeLoginInfo.getAddress().getHostAddress().isEmpty())
+            throw new IllegalArgumentException("Host Address cannot be empty.");
+
+        if(battlEyeLoginInfo.getAddress().getHostAddress().isBlank())
+            throw new IllegalArgumentException("Host Address cannot be blank.");
 
         socket = new BattlEyeSocket(battlEyeLoginInfo.getAddress().getHostAddress(), battlEyeLoginInfo.getPort(), battlEyeLoginInfo.getPassword(), debug);
 
@@ -42,7 +53,7 @@ public class JConClient {
                     }
                 }
             }
-        }, 0, 500);
+        }, 0, RECEIVE_TICK);
 
         sendTaskTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -55,7 +66,7 @@ public class JConClient {
                     }
                 }
             }
-        }, 0, 600);
+        }, 0, SEND_TICK);
 
         socket.connect();
         socket.login();
@@ -70,7 +81,7 @@ public class JConClient {
                     long timeSince = curTime - lastSentTime;
 
                     if (debug) {
-                        System.out.println("Time Since: " + timeSince);
+                        //System.out.println("Time Since: " + timeSince);
                     }
 
                     if (timeSince > MONITOR_TIME) {
@@ -80,25 +91,21 @@ public class JConClient {
                     }
                 }
             }
-        }, 0, 1000);
+        }, 0, CONNECTION_TICK);
 
-        if (debug) {
-            StringBuilder builder = new StringBuilder()
-                    .append("[BattlEye]:: Socket IsConnected: " + socket.isConnected() + "\n");
-
-            System.out.println(builder.toString());
-        }
+        if (debug)
+            BattlEyeLogger.GetLogger().log("Socket IsConnected: " + socket.isConnected());
     }
 
-    public JConClient(String address, int port, String password, boolean debug) throws SocketException {
+    public JConClient(String address, int port, String password, boolean debug) throws IOException {
         this(new BattlEyeLoginInfo(address, port, password), debug);
     }
 
-    public JConClient(String address, int port, String password) throws SocketException {
+    public JConClient(String address, int port, String password) throws IOException {
         this(address, port, password, false);
     }
 
-    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo) throws SocketException {
+    public JConClient(BattlEyeLoginInfo battlEyeLoginInfo) throws IOException {
         this(battlEyeLoginInfo, false);
     }
 
@@ -111,24 +118,16 @@ public class JConClient {
     }
 
     public void sendCommand(String command) {
-        String[] cmd = command.split(" ");
-
         if (socket.isConnected()) {
-            BattlEyeCommandType[] commands = BattlEyeCommandType.values();
-            boolean isValidCommand = false;
+            boolean isValidCommand = BattlEyeCommandType.isValidCommand(command);
 
-            for (BattlEyeCommandType type : commands) {
-                if (type.getCommandString().equals(cmd[0])) {
-                    isValidCommand = true;
-                    break;
-                }
+            if (isValidCommand) {
+                socket.sendCommand(command);
             }
 
-            if (isValidCommand)
-                socket.sendCommand(command);
-
-            if (!isValidCommand)
-                System.err.println("[BattlEye]:: Invalid Command! Command not sent to RCON.");
+            if (!isValidCommand) {
+                BattlEyeLogger.GetLogger().error("Invalid Command! Command not sent to RCON.");
+            }
         }
     }
 }

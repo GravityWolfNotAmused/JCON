@@ -5,6 +5,7 @@ import BattleEye.Socket.BattlEyePacketType;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.zip.CRC32;
 
 public class BattlEyeCommand {
@@ -37,7 +38,7 @@ public class BattlEyeCommand {
         buffer.put((byte) 0xFF);
         buffer.put(type.getHexValue());
 
-        if (sequence >= 0)
+        if (sequence >= 0 && type != BattlEyePacketType.LOGIN)
             buffer.put((byte) sequence);
 
         if (command != null && !command.isEmpty())
@@ -69,5 +70,15 @@ public class BattlEyeCommand {
     public BattlEyeCommand setSequence(int seq) {
         sequence = seq;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "BattlEyeCommand{" +
+                "command='" + command + '\'' +
+                ", commandBytes=" + Arrays.toString(commandBytes) +
+                ", sequence=" + sequence +
+                ", packetBytes=" + Arrays.toString(packetBytes) +
+                '}';
     }
 }

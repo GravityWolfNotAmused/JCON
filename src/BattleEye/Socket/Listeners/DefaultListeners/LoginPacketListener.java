@@ -1,5 +1,6 @@
 package BattleEye.Socket.Listeners.DefaultListeners;
 
+import BattleEye.Logger.BattlEyeLogger;
 import BattleEye.Socket.Listeners.BattlEyePacketListener;
 
 public class LoginPacketListener implements BattlEyePacketListener {
@@ -7,10 +8,10 @@ public class LoginPacketListener implements BattlEyePacketListener {
     public void onPacketReceived(byte type, int sequence, byte[] data) {
         if (type == 0x00) {
             if (sequence == 0x01)
-                System.out.println("[BattlEye]:: Login Request: Success");
+                BattlEyeLogger.GetLogger().log("Login Request: Success");
 
             if (sequence == 0x00)
-                System.out.println("[BattlEye]:: Login Request: Failed");
+                BattlEyeLogger.GetLogger().error("Login Request: Failed");
         }
     }
 }
