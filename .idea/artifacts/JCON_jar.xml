@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JCON:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JCON_jar</output-path>
+    <root id="archive" name="JCON.jar">
+      <element id="module-output" name="JCON" />
+    </root>
+  </artifact>
+</component>

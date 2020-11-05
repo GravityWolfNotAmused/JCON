@@ -1,29 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JCON:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9133de9c-feb9-49ee-b94e-937f0f233c4c" name="Default Changelist" comment="Updated a few things. Still fixing bug.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommandType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JCON.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JCON.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Client/JConClient$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Client/JConClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Command/BattleEyeCommandType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Login/BattlEyeLoginInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/NumberIncrementer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/BattlEyeCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/BattlEyeSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/BattleSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/BattlEyePacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/BattlEyeQueueListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Threading/JConReceivingThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Threading/JConRunnableBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/BattleEye/Threading/JConSendingThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BattleEye.Java/META-INF/BattleEye.Java.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Client/JConClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattlEyeCommandType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Command/BattleEyeCommandType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Logger/BLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Logger/BattlEyeLogger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Login/BattlEyeLoginInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeListenerManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyePacketType.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattlEyeSocket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JCON/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JCON/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Client/JConClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Command/BattlEyeCommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/BattlEyeSocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/BattleSocket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyePacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/BattlEyeQueueListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/CommandPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/GenericPacketReceivedListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Listeners/DefaultListeners/LoginPacketListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/BattleEye/Socket/Sequence/NumberIncrementer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/META-INF/JCON.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JCON/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,10 +86,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="D:/Users/Gravi/AppData/Local/Android/SDK" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ExampleMain" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Documents\GitHub\JCON\ExampleMain" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="BattleEye.Socket" />
       <recent name="BattleEye" />
@@ -129,9 +165,18 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598130775653">
+    <state x="-1819" y="235" key="#Main" timestamp="1604615588793">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-1819" y="235" key="#Main/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604615588793" />
+    <state x="-1943" y="235" key="#Project_Structure" timestamp="1604615167103">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-1943" y="235" key="#Project_Structure/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604615167103" />
+    <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604614839728">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
+    <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614839728" />
     <state x="479" y="232" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1598130775653" />
     <state x="830" y="278" key="#com.intellij.ide.util.MemberChooser" timestamp="1604609134373">
       <screen x="0" y="0" width="2048" height="1152" />
@@ -146,30 +191,42 @@
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
     <state x="755" y="324" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604613395926" />
-    <state width="2005" height="482" key="GridCell.Tab.0.bottom" timestamp="1604614046197">
-      <screen x="0" y="0" width="2048" height="1152" />
+    <state x="-1755" y="318" key="FileChooserDialogImpl" timestamp="1604615468919">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-1755" y="318" key="FileChooserDialogImpl/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604615468919" />
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom" timestamp="1604616052726">
+      <screen x="-2560" y="0" width="2048" height="1152" />
     </state>
     <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046197" />
+    <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604616052726" />
     <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
     <state width="2005" height="482" key="GridCell.Tab.0.bottom/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
-    <state width="2005" height="482" key="GridCell.Tab.0.center" timestamp="1604614046196">
-      <screen x="0" y="0" width="2048" height="1152" />
+    <state width="2005" height="482" key="GridCell.Tab.0.center" timestamp="1604616052726">
+      <screen x="-2560" y="0" width="2048" height="1152" />
     </state>
     <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046196" />
+    <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604616052726" />
     <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
     <state width="2005" height="482" key="GridCell.Tab.0.center/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
-    <state width="2005" height="482" key="GridCell.Tab.0.left" timestamp="1604614046196">
-      <screen x="0" y="0" width="2048" height="1152" />
+    <state width="2005" height="482" key="GridCell.Tab.0.left" timestamp="1604616052726">
+      <screen x="-2560" y="0" width="2048" height="1152" />
     </state>
     <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046196" />
+    <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604616052726" />
     <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785598" />
     <state width="2005" height="482" key="GridCell.Tab.0.left/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
-    <state width="2005" height="482" key="GridCell.Tab.0.right" timestamp="1604614046197">
-      <screen x="0" y="0" width="2048" height="1152" />
+    <state width="2005" height="482" key="GridCell.Tab.0.right" timestamp="1604616052726">
+      <screen x="-2560" y="0" width="2048" height="1152" />
     </state>
     <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604614046197" />
+    <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604616052726" />
     <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527785599" />
     <state width="2005" height="482" key="GridCell.Tab.0.right/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602608092554" />
+    <state x="-2055" y="151" key="SettingsEditor" timestamp="1604615968184">
+      <screen x="-2560" y="0" width="2048" height="1152" />
+    </state>
+    <state x="-2055" y="151" key="SettingsEditor/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604615968184" />
     <state x="487" y="158" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604606936621">
       <screen x="0" y="0" width="2048" height="1152" />
     </state>
@@ -189,9 +246,10 @@
     <state x="719" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152/2560.0.1920.1080@0.0.2048.1152" timestamp="1604613333795" />
     <state x="-1841" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1604527760230" />
     <state x="719" y="308" width="611" height="536" key="find.popup/0.0.2048.1152/-2560.0.2048.1152@0.0.2048.1152" timestamp="1602453759884" />
-    <state x="-2095" y="198" key="new project wizard" timestamp="1601334924494">
+    <state x="-2095" y="198" key="new project wizard" timestamp="1604615449935">
       <screen x="-2560" y="0" width="2048" height="1152" />
     </state>
+    <state x="-2095" y="198" key="new project wizard/0.0.2048.1152/-2560.0.2048.1152/2560.597.1920.1080@-2560.0.2048.1152" timestamp="1604615449935" />
     <state x="-2095" y="198" key="new project wizard/0.0.2048.1152/-2560.0.2048.1152@-2560.0.2048.1152" timestamp="1601334924494" />
     <state x="681" y="269" key="run.anything.popup" timestamp="1604543585689">
       <screen x="0" y="0" width="2048" height="1152" />
